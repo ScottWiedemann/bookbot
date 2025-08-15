@@ -3,7 +3,7 @@
 ## Description
 
 This is a project created by following along on the [boot.dev](https://www.boot.dev/)
-Bookbot project course.
+Bookbot project course. BookBot is my first [Boot.dev](https://www.boot.dev) project!
 
 I am working through boot.dev to learn python.
 
