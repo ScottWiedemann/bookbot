@@ -1,35 +1,19 @@
-def sort_on(dict):
-    return dict["count"]
-
-book = "books/frankenstein.txt"
-
-with open(book) as f:
-    file_contents = f.read()
-
-    words = file_contents.split()
-    lowercase_content = file_contents.lower()
-    letter_count = {}
-     
-    for char in lowercase_content:
-        if not char.isalpha():
-            continue
-        if char in letter_count:
-            letter_count[char] += 1
-        else:
-            letter_count[char] = 1
-
-    letter_list = []
-
-    for letter in letter_count:
-        letter_list.append({ "letter": letter, "count": letter_count[letter]}) 
-
-    letter_list.sort(reverse=True, key=sort_on)
+from stats import chars_dict_to_sorted_list, get_chars_dict, get_num_words
 
 
-    print(f"--- Begin report of {book} ---")
-    print(f"{len(words)} words found in this document\n")
-    
-    for letter in letter_list:
-        print(f"The '{letter["letter"]}' character was found {letter["count"]} times")
+def main() -> None:
+    book_path = "books/frankenstein.txt"
+    text = get_book_text(book_path)
+    num_words = get_num_words(text)
+    chars_dict = get_chars_dict(text)
+    chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
+    print(f"Found {num_words} total words")
+    print(chars_sorted_list)
 
-    print("--- End Report ---")
+
+def get_book_text(path: str) -> str:
+    with open(path) as f:
+        return f.read()
+
+
+main()
